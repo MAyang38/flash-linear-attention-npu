@@ -44,6 +44,7 @@
 #include "stable_fast_gelu_custom_backward.cpp"
 #include "stable_kda_gate_cumsum.cpp"
 #include "stable_mega_recurrent_kda.cpp"
+#include "stable_mega_recurrent_kda_mx.cpp"
 #include "stable_merge_fwd_bwd_kernel.cpp"
 #include "stable_pre_process_fwd_kernel_merged.cpp"
 #include "stable_prepare_wy_repr_bwd.cpp"
@@ -103,6 +104,7 @@ static void register_schemas(StableLibrary& m) {
   m.def(kSchema_npu_fast_gelu_custom_backward);
   m.def(kSchema_kda_gate_cumsum);
   m.def(kSchema_mega_recurrent_kda);
+  m.def(kSchemaMegaRecurrentKdaMx);
   m.def(kSchema_mega_recurrent_kda_v2);
   m.def(kSchema_kda_metadata);
   m.def(kSchema_chunk_kda_bwd_intra);
@@ -151,6 +153,7 @@ static void register_implementations(StableLibrary& m) {
   m.impl("npu_mega_recurrent_kda_v2", &fla_npu_stable::stable::boxed_adapter<run_mega_recurrent_kda_v2>);
   m.impl("npu_mega_recurrent_kda",
          &fla_npu_stable::stable::boxed_adapter<run_mega_recurrent_kda>);
+  m.impl("npu_mega_recurrent_kda_mx", &fla_npu_stable::stable::boxed_adapter<run_mega_recurrent_kda_mx>);
   m.impl("npu_fast_gelu_custom",
          &fla_npu_stable::stable::boxed_adapter<run_npu_fast_gelu_custom>);
   m.impl("npu_fast_gelu_custom_backward",

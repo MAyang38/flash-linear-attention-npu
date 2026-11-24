@@ -1,0 +1,6 @@
+add_op_to_compiled_list()
+if(BUILD_OPEN_PROJECT)
+    target_sources(op_host_aclnn PRIVATE mega_recurrent_kda_mx_def.cpp)
+endif()
+add_modules_sources(OPTYPE mega_recurrent_kda_mx ACLNNTYPE aclnn)
+add_ops_compile_options(OP_NAME MegaRecurrentKdaMx OPTIONS --cce-auto-sync=off)
